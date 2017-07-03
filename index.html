@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Custos do Ônibus Hacker</title>
+
+    <!-- Tangle -->
+    <script type="text/javascript" src="js/Tangle.js"></script>
+    
+    <!-- TangleKit (optional) -->
+    <link rel="stylesheet" href="js/TangleKit/TangleKit.css" type="text/css">
+    <script type="text/javascript" src="js/TangleKit/mootools.js"></script>
+    <script type="text/javascript" src="js/TangleKit/sprintf.js"></script>
+    <script type="text/javascript" src="js/TangleKit/BVTouchable.js"></script>
+    <script type="text/javascript" src="js/TangleKit/TangleKit.js"></script>
+
+    <!-- example -->
+    <script type="text/javascript">
+
+        function setUpTangle () {
+
+            var element = document.getElementById("example");
+
+            var tangle = new Tangle(element, {
+                initialize: function () {
+                    this.tripulantes = 16;
+                    this.diarias = 3;
+                    this.quilometragem = 100;
+                    this.hospedagem = true;
+                },
+                update: function () {
+                    this.custo = (this.diarias*250) + (this.quilometragem*2*4) + (70*this.diarias*this.hospedagem*this.tripulantes);
+                }
+            });
+        }
+
+    </script>
+</head>
+
+<body onload="setUpTangle();">
+
+    <p>Calculadora de custos do Ônibus Hacker.</p>
+
+    <p id="example">
+        Para viajar com <span data-var="tripulantes" class="TKAdjustableNumber" data-min="2" data-max="24"> passageiros</span> durante <span data-var="diarias" class="TKAdjustableNumber" data-min="2" data-max="21"> dias</span> para uma cidade que fica a <span data-var="quilometragem" class="TKNumberField"> kms</span> o custo da viagem <span data-var="hospedagem" class="TKToggle TKSwitch"><span>sem</span><span>com</span></span> hospedagem e alimentação é aproximadamente de <span data-var="custo"> reais</span>.
+    </p>
+
+</body>
+</html>
